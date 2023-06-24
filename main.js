@@ -51,11 +51,19 @@ function playRound(playerSelection, computerSelection) {
   return csScore, psScore;
 }
 
-console.log(playRound('rock', computerSelection));
-console.log(playRound('paper', computerSelection));
-console.log(playRound('scissors', computerSelection));
-console.log(playRound('scissors', computerSelection));
-console.log(playRound('paper', computerSelection));
+const rockInp = document.getElementById('rock').innerHTML;
+const paperInp = document.getElementById('paper').innerHTML;
+const scissorsInp = document.getElementById('scissors').innerHTML;
+
+console.log(rockInp);
+console.log(paperInp);
+console.log(scissorsInp);
+
+// console.log(playRound('rock', computerSelection));
+// console.log(playRound('paper', computerSelection));
+// console.log(playRound('scissors', computerSelection));
+// console.log(playRound('scissors', computerSelection));
+// console.log(playRound('paper', computerSelection));
 
 console.log("Computer's Score: ", csScore);
 console.log("Your Score: ", psScore);
