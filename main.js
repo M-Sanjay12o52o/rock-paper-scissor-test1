@@ -1,23 +1,38 @@
-// Computer's Choice Function
-
-function getCompuerChoice() {
+function getComputerChoice() {
   let ans = '';
-  let num = 0;
-  num = Math.floor((Math.random() * 3));
-  if (num == 0) {
-    ans = "rock";
-  } else if (num == 1) {
-    ans = "paper"; 
-  } else if (num == 2) {
-    ans = "scissors";
+  let num = Math.floor(Math.random() * 3);
+
+  if (num === 0) {
+    ans += 'rock';
+  } else if (num === 1) {
+    ans += 'paper';
+  } else if (num === 2) {
+    ans += 'scissors';
   }
   return ans;
 }
 
-let computerSelection = getCompuerChoice(); 
-// console.log(computerSelection);
+let computerSelection;
 
-// Playround  Function
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
+
+rockBtn.addEventListener('click', handleClick);
+paperBtn.addEventListener('click', handleClick);
+scissorsBtn.addEventListener('click', handleClick);
+
+let playerSelection = '';
+
+function handleClick(event) {
+  const buttonValue = event.target.innerHTML;
+  playerSelection = buttonValue;
+  computerSelection = getComputerChoice();
+  round = playRound(playerSelection, computerSelection);
+  roundResult.textContent = round;
+  console.log(round);
+  updateScores();
+}
 
 let psScore = 0;
 let csScore = 0;
@@ -28,95 +43,30 @@ function playRound(playerSelection, computerSelection) {
 
   if (ps === cs) {
     return "It's a Tie!";
-  } else if (ps == 'rock' && cs == 'paper') {
+  } else if (ps === 'rock' && cs === 'paper') {
     csScore += 1;
-    return "You Lose! Paper beats Rock"; 
-  } else if (ps == 'rock' && cs == 'scissors') {
-    csScore += 1;
-    return "You Lose! Scissors beats Paper"
-  } else if (ps == 'paper' && cs == 'rock') {
+    return "You Lose! Paper beats Rock";
+  } else if (ps === 'rock' && cs === 'scissors') {
     psScore += 1;
-    return "You Win. Paper Covers Rock"
-  } else if (ps == 'paper' && cs == 'scissors') {
-    csScore += 1;
-    return "You Lose! Scissors cuts Paper"
-  } else if (ps == 'scissors' && cs == 'paper') {
+    return "You Win! Rock beats Scissors";
+  } else if (ps === 'paper' && cs === 'rock') {
     psScore += 1;
-    return "You Win. Scissors cuts Paper"
-  } else if (ps == 'scissors' && cs == 'rock') {
+    return "You Win! Paper beats Rock";
+  } else if (ps === 'paper' && cs === 'scissors') {
     csScore += 1;
-    return "You Lose! Rock beats Scissors"
-  }
-
-  return csScore, psScore;
-}
-
-// const rockInp = document.getElementById('rock').innerHTML;
-// const paperInp = document.getElementById('paper').innerHTML;
-// const scissorsInp = document.getElementById('scissors').innerHTML;
-
-// console.log(rockInp);
-// console.log(paperInp);
-// console.log(scissorsInp);
-
-function userInput(buttonId) {
-  if (buttonId === 'rock') {
-    return 'rock';
-  } else if (buttonId === 'paper') {
-    return 'paper';
-  } else if (buttonId === 'scissors') {
-    return 'scissors';
+    return "You Lose! Scissors beats Paper";
+  } else if (ps === 'scissors' && cs === 'paper') {
+    psScore += 1;
+    return "You Win! Scissors beats Paper";
+  } else if (ps === 'scissors' && cs === 'rock') {
+    csScore += 1;
+    return "You Lose! Rock beats Scissors";
   }
 }
 
-const rockButton = document.getElementById('rock');
-const paperButton = document.getElementById('paper');
-const scissorsButton = document.getElementById('scissors');
-
-const rockButtonValue = document.getElementById('rock').innerHTML;
-const paperButtonValue = document.getElementById('paper').innerHTML;
-const scissorsButtonValue = document.getElementById('scissors').innerHTML;
-
-let playerSelection;
-
-document.getElementById('buttons').addEventListener('click', function(event) {
-  if (event.target.tagName === 'BUTTON') {
-    playerSelection = event.target.textContent;
-    return playerSelection;
-    // Call your function or perform any desired actions with the playerSelection value
-  }
-});
-
-
-console.log(playRound(playerSelection, computerSelection));
-// console.log(playRound('rock', computerSelection));
-// console.log(playRound('paper', computerSelection));
-// console.log(playRound('scissors', computerSelection));
-// console.log(playRound('scissors', computerSelection));
-// console.log(playRound('paper', computerSelection));
-
-console.log("Computer's Score: ", csScore);
-console.log("Your Score: ", psScore);
-
-//Final Result
-function finalResult() {
-  if (csScore > psScore) {
-    console.log("You Lose. " + "Final Scores: " + "Computers - " + csScore + ". Your's - " + psScore);
-  } else if(psScore > csScore) {
-    console.log("You WIN.b" + "Final Scores: " + "Computers - " + csScore + ". Your's - " + psScore);
-  } else {
-    console.log("It's a TIE. " + "Final Scores: " + "Computers - " + csScore + ". Your's - " + psScore);
-  }
+function updateScores() {
+  document.getElementById('playerScore').textContent = psScore;
+  document.getElementById('computerScore').textContent = csScore;
 }
 
-console.log(finalResult());
-
-// console.log(playRound('ROCK', computerSelection));
-
-// Function GAME
-
-
-
-// console.log(game());
-
-
+let roundResult = document.getElementById('roundResult');
