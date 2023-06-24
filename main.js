@@ -69,18 +69,15 @@ function userInput(buttonId) {
   }
 }
 
-document.getElementById('rock').addEventListener('click', function() {
-  userInput('rock');
-});
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
 
-document.getElementById('paper').addEventListener('click', function() {
-  userInput('paper');
-});
+const rockButtonValue = document.getElementById('rock').innerHTML;
+const paperButtonValue = document.getElementById('paper').innerHTML;
+const scissorsButtonValue = document.getElementById('scissors').innerHTML;
 
-document.getElementById('scissors').addEventListener('click', function() {
-  userInput('scissors');
-});
-
+let playerSelection = 
 
 console.log(playRound(playerSelection, computerSelection));
 // console.log(playRound('rock', computerSelection));
@@ -113,11 +110,4 @@ console.log(finalResult());
 
 // console.log(game());
 
-const rockButton = document.getElementById('rock');
-const paperButton = document.getElementById('paper');
-const scissorsButton = document.getElementById('scissors');
-
-const rockButtonValue = document.getElementById('rock').innerHTML;
-const paperButtonValue = document.getElementById('paper').innerHTML;
-const scissorsButtonValue = document.getElementById('scissors').innerHTML;
 
