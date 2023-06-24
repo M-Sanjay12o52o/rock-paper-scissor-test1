@@ -9,3 +9,4 @@ input for the playRound function's first argument.
 3 - playing round using the computer's selection according to the number of games predefined.
     displaying one games after after the other.
 4 - finally displaying the final result after five rounds of games.
+  
