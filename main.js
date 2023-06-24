@@ -13,29 +13,41 @@ function getComputerChoice() {
 }
 
 let computerSelection;
+let playerSelection = '';
+let psScore = 0;
+let csScore = 0;
+let totalRounds = 0;
+const winningScore = 5;
 
 const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById('paper');
 const scissorsBtn = document.getElementById('scissors');
+let roundResult = document.getElementById('roundResult');
+const playerScoreDisplay = document.getElementById('playerScore');
+const computerScoreDisplay = document.getElementById('computerScore');
+const winner = document.getElementById('winner');
+
 
 rockBtn.addEventListener('click', handleClick);
 paperBtn.addEventListener('click', handleClick);
 scissorsBtn.addEventListener('click', handleClick);
 
-let playerSelection = '';
+
 
 function handleClick(event) {
-  const buttonValue = event.target.innerHTML;
+  if (psScore < winningScore && csScore < winningScore) {
+   const buttonValue = event.target.innerHTML;
   playerSelection = buttonValue;
   computerSelection = getComputerChoice();
-  round = playRound(playerSelection, computerSelection);
+  const round = playRound(playerSelection, computerSelection);
   roundResult.textContent = round;
   console.log(round);
   updateScores();
+    totalRounds++;
+    checkWinner();
+  }
 }
 
-let psScore = 0;
-let csScore = 0;
 
 function playRound(playerSelection, computerSelection) {
   let ps = playerSelection.toLowerCase();
@@ -65,8 +77,22 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function updateScores() {
-  document.getElementById('playerScore').textContent = psScore;
-  document.getElementById('computerScore').textContent = csScore;
+  playerScoreDisplay.textContent = psScore;
+  computerScoreDisplay.textContent = csScore;
 }
 
-let roundResult = document.getElementById('roundResult');
+function checkWinner() {
+  if (psScore >= winningScore) {
+    winner.textContent = "Congratulations! You won!";
+    disableButtons();
+  } else if (csScore >= winningScore) {
+    winner.textContent = "Computer Wins! Better luck next time.";
+    disableButtons();
+  }
+}
+
+function disableButtons() {
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+}
