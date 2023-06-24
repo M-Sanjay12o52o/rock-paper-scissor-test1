@@ -51,13 +51,37 @@ function playRound(playerSelection, computerSelection) {
   return csScore, psScore;
 }
 
-const rockInp = document.getElementById('rock').innerHTML;
-const paperInp = document.getElementById('paper').innerHTML;
-const scissorsInp = document.getElementById('scissors').innerHTML;
+// const rockInp = document.getElementById('rock').innerHTML;
+// const paperInp = document.getElementById('paper').innerHTML;
+// const scissorsInp = document.getElementById('scissors').innerHTML;
 
-console.log(rockInp);
-console.log(paperInp);
-console.log(scissorsInp);
+// console.log(rockInp);
+// console.log(paperInp);
+// console.log(scissorsInp);
+
+function userInput(buttonId) {
+  if (buttonId === 'rock') {
+    return 'rock';
+  } else if (buttonId === 'paper') {
+    return 'paper';
+  } else if (buttonId === 'scissors') {
+    return 'scissors';
+  }
+}
+
+let playerSelection = userInput(buttonId);
+
+document.getElementById('rock').addEventListener('click', function() {
+  userInput('rock');
+});
+
+document.getElementById('paper').addEventListener('click', function() {
+  userInput('paper');
+});
+
+document.getElementById('scissors').addEventListener('click', function() {
+  userInput('scissors');
+});
 
 // console.log(playRound('rock', computerSelection));
 // console.log(playRound('paper', computerSelection));

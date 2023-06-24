@@ -1,0 +1,11 @@
+// Problem
+We need to take the value inside the button that is the innerHTML of the button element as an 
+input for the playRound function's first argument.
+
+// Complete breack of the problem 
+
+1 - getting computer's selection.
+2 - getting user's selection from the pressing of the button.
+3 - playing round using the computer's selection according to the number of games predefined.
+    displaying one games after after the other.
+4 - finally displaying the final result after five rounds of games.
