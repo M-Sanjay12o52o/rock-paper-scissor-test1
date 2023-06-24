@@ -16,7 +16,7 @@ let computerSelection;
 let playerSelection = '';
 let psScore = 0;
 let csScore = 0;
-// let totalRounds = 0;
+//  
 const winningScore = 5;
 
 const rockBtn = document.getElementById('rock');
