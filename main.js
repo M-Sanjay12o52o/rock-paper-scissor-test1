@@ -77,7 +77,16 @@ const rockButtonValue = document.getElementById('rock').innerHTML;
 const paperButtonValue = document.getElementById('paper').innerHTML;
 const scissorsButtonValue = document.getElementById('scissors').innerHTML;
 
-let playerSelection = 
+let playerSelection;
+
+document.getElementById('buttons').addEventListener('click', function(event) {
+  if (event.target.tagName === 'BUTTON') {
+    playerSelection = event.target.textContent;
+    return playerSelection;
+    // Call your function or perform any desired actions with the playerSelection value
+  }
+});
+
 
 console.log(playRound(playerSelection, computerSelection));
 // console.log(playRound('rock', computerSelection));
